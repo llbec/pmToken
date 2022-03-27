@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "declaration": true,
+    "noImplicitAny": false
+  },
+  "include": ["./scripts", "./test", "./typechain"],
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "./hardhat.config.ts",
+    "node_modules/@nomiclabs/buidler-ethers/src/type-extensions.d.ts",
+    "node_modules/@nomiclabs/hardhat-ethers/src/internal/type-extensions.ts",
+  ]
+}
