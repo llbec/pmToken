@@ -26,3 +26,13 @@ npm i
 - ```npm run deploy-bsc``` 合约部署到BSC主网
 - ```npm run deploy-bsctest``` 合约部署到BSC测试网
 
+### windows执行命令
+1. 在```.env```文件中添加 ```SKIP_LOAD=true```
+2. 运行命令```npx hardhat compile```进行编译
+3. 去掉```.env```文件中的 ```SKIP_LOAD=true```
+4. 执行预设命令
+    - 部署bsc测试链，执行命令 ```npx hardhat --network bsctestnet deploy-PMToken```
+    - 部署bsc主网，执行命令 ```npx hardhat --network bsc deploy-PMToken```
+    - 部署bsc测试链并验证合约，执行命令 ```npx hardhat --network bsctestnet deploy-PMToken --verify```
+    - 部署bsc主网并验证合约，执行命令 ```npx hardhat --network bsc deploy-PMToken --verify```
+    - 执行测试脚本，执行命令 ```npx hardhat test .\test\__setup.spec.ts .\test\erc20.spec.ts```
