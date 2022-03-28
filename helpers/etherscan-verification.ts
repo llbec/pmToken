@@ -14,7 +14,7 @@ const okErrors = [`Contract source code already verified`];
 
 const unableVerifyError = 'Fail - Unable to verify';
 
-export const SUPPORTED_ETHERSCAN_NETWORKS = ['main', 'ropsten', 'kovan', 'htestnet', 'heco', 'hoo', 'amain', 'arinkeby', 'bsc','bsctestnet', 'okex'];
+export const SUPPORTED_ETHERSCAN_NETWORKS = ['main', 'ropsten', 'kovan', 'hecotestnet', 'heco', 'hoo', 'amain', 'arinkeby', 'bsc','bsctestnet', 'okex'];
 
 function delay(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -27,8 +27,8 @@ export const verifyEtherscanContract = async (
 ) => {
     const currentNetwork = DRE.network.name;
   
-    if (!process.env.ETHERSCAN_KEY) {
-        throw Error('Missing process.env.ETHERSCAN_KEY.');
+    if (!process.env.ETHERSCAN_API_KEY) {
+        throw Error('Missing process.env.ETHERSCAN_API_KEY.');
     }
     if (!SUPPORTED_ETHERSCAN_NETWORKS.includes(currentNetwork)) {
         throw Error(
@@ -112,8 +112,8 @@ export const runTaskWithRetry = async (
   
 export const checkVerification = () => {
     const currentNetwork = DRE.network.name;
-    if (!process.env.ETHERSCAN_KEY) {
-        console.error('Missing process.env.ETHERSCAN_KEY.');
+    if (!process.env.ETHERSCAN_API_KEY) {
+        console.error('Missing process.env.ETHERSCAN_API_KEY.');
         exit(3);
     }
     if (!SUPPORTED_ETHERSCAN_NETWORKS.includes(currentNetwork)) {

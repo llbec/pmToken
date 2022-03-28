@@ -17,3 +17,7 @@ export const setDRE = (_DRE: HardhatRuntimeEnvironment | BuidlerRuntimeEnvironme
 export const evmSnapshot = async () => await DRE.ethers.provider.send('evm_snapshot', []);
 
 export const evmRevert = async (id: string) => DRE.ethers.provider.send('evm_revert', [id]);
+
+export const getCurrentBlock = async () => {
+    return DRE.ethers.provider.getBlockNumber();
+  };

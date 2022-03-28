@@ -59,6 +59,14 @@ const config: HardhatUserConfig = {
       chainId: 97,
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
+    hecotestnet: {
+      url: "https://http-testnet.hecochain.com",
+      blockGasLimit: DEFAULT_BLOCK_GAS_LIMIT,
+      gasMultiplier: DEFAULT_GAS_MUL,
+      gasPrice: DEFAULT_GAS_PRICE,
+      chainId: 256,
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
     hardhat: {
       hardfork: 'berlin',
       blockGasLimit: DEFAULT_BLOCK_GAS_LIMIT,

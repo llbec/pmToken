@@ -39,7 +39,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     ) {
         _name = "Planet Mobius";
         _symbol = "PM";
-        
+
         state.init(team, half, peroid, round);
         _mint(foundation, state.sFoundation);
         _mint(left, state.sLeft);
@@ -87,7 +87,13 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     /**
      * @dev See {IERC20-balanceOf}.
      */
-    function balanceOf(address account) public view virtual override returns (uint256) {
+    function balanceOf(address account)
+        public
+        view
+        virtual
+        override
+        returns (uint256)
+    {
         return _balances[account] + state.pmBalance(account);
     }
 
@@ -99,7 +105,12 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      * - `to` cannot be the zero address.
      * - the caller must have a balance of at least `amount`.
      */
-    function transfer(address to, uint256 amount) public virtual override returns (bool) {
+    function transfer(address to, uint256 amount)
+        public
+        virtual
+        override
+        returns (bool)
+    {
         address owner = _msgSender();
         _transfer(owner, to, amount);
         return true;
@@ -108,7 +119,13 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     /**
      * @dev See {IERC20-allowance}.
      */
-    function allowance(address owner, address spender) public view virtual override returns (uint256) {
+    function allowance(address owner, address spender)
+        public
+        view
+        virtual
+        override
+        returns (uint256)
+    {
         return _allowances[owner][spender];
     }
 
@@ -122,7 +139,12 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      *
      * - `spender` cannot be the zero address.
      */
-    function approve(address spender, uint256 amount) public virtual override returns (bool) {
+    function approve(address spender, uint256 amount)
+        public
+        virtual
+        override
+        returns (bool)
+    {
         address owner = _msgSender();
         _approve(owner, spender, amount);
         return true;
@@ -167,7 +189,11 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      *
      * - `spender` cannot be the zero address.
      */
-    function increaseAllowance(address spender, uint256 addedValue) public virtual returns (bool) {
+    function increaseAllowance(address spender, uint256 addedValue)
+        public
+        virtual
+        returns (bool)
+    {
         address owner = _msgSender();
         _approve(owner, spender, allowance(owner, spender) + addedValue);
         return true;
@@ -187,10 +213,17 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      * - `spender` must have allowance for the caller of at least
      * `subtractedValue`.
      */
-    function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {
+    function decreaseAllowance(address spender, uint256 subtractedValue)
+        public
+        virtual
+        returns (bool)
+    {
         address owner = _msgSender();
         uint256 currentAllowance = allowance(owner, spender);
-        require(currentAllowance >= subtractedValue, "decreased allowance below zero");
+        require(
+            currentAllowance >= subtractedValue,
+            "decreased allowance below zero"
+        );
         unchecked {
             _approve(owner, spender, currentAllowance - subtractedValue);
         }
@@ -325,7 +358,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
         }
     }
 
-    // ========= AIRDROP =========
+    // ========= pm functions =========
     function adLeft() public view returns (uint256) {
         return state.airdropLeft();
     }
@@ -333,7 +366,11 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     function airdrop() public {
         address to = _msgSender();
         uint256 amount = state.airdrop(to);
-        require(amount > 0, "airdrop finish");
+        require(amount > 0, "airdrop completed");
         _mint(to, amount);
+    }
+
+    function unlockHeight() public view returns (uint256) {
+        return state.startHeight();
     }
 }

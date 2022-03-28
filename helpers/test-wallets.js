@@ -34,5 +34,21 @@ module.exports = {
       secretKey: '0xa2e0097c961c67ec197b6865d7ecea6caffc68ebeb00e6050368c8f67fc9c588',
       balance,
     },
+    {
+      secretKey: '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80',
+      balance,
+    },
+    {
+      secretKey: '0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d',
+      balance,
+    },
+    {
+      secretKey: '0x18e14a7b6a307f426a94f8114701e7c8e774e7f9a47e2c2035db29a206321725',
+      balance,
+    },
+    {
+      secretKey: '0xf8f8a2f43c8376ccb0871305060d7b27b0554d2cc72bccf41b2705608452f315',
+      balance,
+    }
   ],
 };

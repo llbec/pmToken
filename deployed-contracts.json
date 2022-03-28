@@ -3,6 +3,10 @@
     "hardhat": {
       "address": "0x7c2C195CD6D34B8F845992d380aADB2730bB9C6F",
       "deployer": "0xc783df8a850f42e7F7e57013759C285caa701eB6"
+    },
+    "hecotestnet": {
+      "address": "0x6772CcD22CAb0b5Fbf8051915e94f79e4F173714",
+      "deployer": "0x43295489e915225AAa8F83967F67B056A3279347"
     }
   }
 }
